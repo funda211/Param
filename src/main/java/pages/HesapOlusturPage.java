@@ -10,12 +10,12 @@ import java.util.Random;
 public class HesapOlusturPage {
     WebDriver driver;
 
-    // Kurumsal Giriş butonunun seçici
+    // Kurumsal Giriş butonunu için CSS
     @FindBy(css = "a.btn.btn-outline-primary.btn-icon[href*='isyerim.param.com.tr']")
     WebElement kurumsalGirisButton;
 
     // Hesap Oluştur linki
-    @FindBy(css = "span.signUp___3OOhy") // Hesap Oluştur linkinin doğru seçicisini buraya ekleyin
+    @FindBy(css = "span.signUp___3OOhy") // Hesap Oluştur linkinin CSS
     WebElement hesapOlusturLink;
 
     // Hesap oluşturma form elemanları
@@ -41,7 +41,7 @@ public class HesapOlusturPage {
 
 
 
-    @FindBy(id = "continue_from_signup") // Devam butonunun doğru seçicisini buraya ekleyin
+    @FindBy(id = "continue_from_signup") // Devam butonu ID
     WebElement devamButton;
 
     public HesapOlusturPage(WebDriver driver) {

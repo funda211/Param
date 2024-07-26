@@ -22,10 +22,7 @@ public class LoginPage {
     @FindBy(id = "loginbutton")  // Giriş butonunun doğru ID veya seçicisini buraya ekleyin
     WebElement loginButton;
 
-    @FindBy(css = ".validation-message")  // Validasyon mesajının doğru CSS seçicisini buraya ekleyin
-    WebElement validationMessage;
-
-    @FindBy(css = ".modalTitle___WE5UD")  // Hata mesajının CSS seçicisi
+    @FindBy(css = ".modalTitle___WE5UD")  // Hata mesajının CSS
     WebElement errorMessage;
 
     public LoginPage(WebDriver driver) {

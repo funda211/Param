@@ -30,7 +30,7 @@ public class OTPPage {
     WebElement otpInput6;
 
     // OTP hata mesajı
-    @FindBy(css = ".otpErrorSelector") // OTP hata mesajının doğru seçicisini buraya ekleyin
+    @FindBy(css = ".otpErrorSelector") // OTP hata mesajı için CSS
     WebElement otpErrorMessage;
 
     // Onayla butonu
