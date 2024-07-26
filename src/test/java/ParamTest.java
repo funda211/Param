@@ -1,8 +1,6 @@
 package test.java;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -43,13 +41,13 @@ public class ParamTest extends BaseTest {
         loginPage.clickLogin();
 
         // Hata mesajını kontrol et
-    WebElement popupMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".modalTitle___WE5UD")));
-    String messageText = popupMessage.getText().trim();
-    System.out.println("Actual message: " + messageText);
+        String messageText = loginPage.getErrorMessage().trim();
+        System.out.println("Actual message: " + messageText);
 
-    // Mesajın beklenen değerle eşleşip eşleşmediğini kontrol et
-    String normalizedMessageText = messageText.replaceAll("\\s+", " ").trim();
-    Assert.assertEquals(normalizedMessageText, EXPECTED_ERROR_MESSAGE, "Mesaj beklenilen değerle eşleşmiyor: " + messageText);
- tearDown();
+        // Mesajın beklenen değerle eşleşip eşleşmediğini kontrol et
+        String normalizedMessageText = messageText.replaceAll("\\s+", " ").trim();
+        Assert.assertEquals(normalizedMessageText, EXPECTED_ERROR_MESSAGE, "Mesaj beklenilen değerle eşleşmiyor: " + messageText);
+
+        tearDown();
     }
 }

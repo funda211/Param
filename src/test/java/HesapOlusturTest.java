@@ -16,9 +16,7 @@ import java.time.Duration;
 
 public class HesapOlusturTest extends BaseTest {
 
-
-    private static final String EXPECTED_ERROR_MESSAGE_OTP = "Şifre Oluştur";
-    private static final String EXPECTED_ERROR_MESSAGE ="Girdiğiniz onay kodu hatalıdır.";
+    private static final String EXPECTED_ERROR_MESSAGE = "Girdiğiniz onay kodu hatalıdır.";
 
     @Test
     public void testHesapOlusturAndOTP() {
@@ -59,17 +57,14 @@ public class HesapOlusturTest extends BaseTest {
         // Onayla butonuna tıkla
         otpPage.clickOnayla();
 
+        // Hata mesajını kontrol et
+        WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("errorVerificationNo")));
+        String otpMessageText = messageElement.getText().trim();
+        System.out.println("Actual message: " + otpMessageText);
 
-          // Hata mesajını kontrol et
-    WebElement Message = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("errorVerificationNo")));
-    String otpMessageText = Message.getText().trim();
-    System.out.println("Actual message: " + EXPECTED_ERROR_MESSAGE_OTP);
-
-    // Mesajın beklenen değerle eşleşip eşleşmediğini kontrol et
-    String normalizedMessageText = otpMessageText.replaceAll("\\s+", " ").trim();
-    Assert.assertEquals(normalizedMessageText, EXPECTED_ERROR_MESSAGE, "Mesaj beklenilen değerle eşleşmiyor: " + otpMessageText);
+        // Mesajın beklenen değerle eşleşip eşleşmediğini kontrol et
+        Assert.assertEquals(otpMessageText, EXPECTED_ERROR_MESSAGE, "Mesaj beklenilen değerle eşleşmiyor: " + otpMessageText);
 
         tearDown();
-
     }
 }

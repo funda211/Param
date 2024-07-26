@@ -12,12 +12,6 @@ public class HomePage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @FindBy(id = "_palamar_chat_iframe")  // iframe'in ID'si
-    private WebElement cookieIframe;
-
-    @FindBy(css = "button[type='button']")  // Çerezleri kabul et butonunun `type` özniteliği
-    private WebElement cookieAcceptButton;
-
     @FindBy(id = "menu_login")  // Giriş Yap butonunun doğru ID'si
     private WebElement girisYapButton;
 
@@ -27,21 +21,6 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void waitForCookiesBanner() {
-        // İframe'in yüklenmesini ve geçişi bekleyin
-        wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(cookieIframe));
-        // Çerezleri kabul et butonunun görünür olmasını bekleyin
-        wait.until(ExpectedConditions.visibilityOf(cookieAcceptButton));
-    }
-
-    public void acceptCookies() {
-        // İframe'e geçiş yapın
-        driver.switchTo().frame(cookieIframe);
-        // Çerezleri kabul et butonuna tıklayın
-        cookieAcceptButton.click();
-        // Ana sayfaya dönün
-        driver.switchTo().defaultContent();
-    }
 
     public void clickGirisYap() {
         // Giriş Yap butonunun görünür olmasını ve tıklanabilir olmasını bekleyin

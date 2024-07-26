@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.time.Duration;
 
 public class LoginPage {
@@ -23,9 +24,6 @@ public class LoginPage {
 
     @FindBy(css = ".validation-message")  // Validasyon mesajının doğru CSS seçicisini buraya ekleyin
     WebElement validationMessage;
-
-
-
 
     @FindBy(css = ".modalTitle___WE5UD")  // Hata mesajının CSS seçicisi
     WebElement errorMessage;
@@ -51,20 +49,6 @@ public class LoginPage {
     public void clickLogin() {
         wait.until(ExpectedConditions.elementToBeClickable(loginButton));
         loginButton.click();
-    }
-
-
-
-
-
-    public String getValidationMessage() {
-        return validationMessage.getText();
-    }
-
-
-
-    public void waitForPasswordField() {
-        wait.until(ExpectedConditions.visibilityOf(passwordField));
     }
 
     public String getErrorMessage() {
