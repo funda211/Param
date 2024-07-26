@@ -20,10 +20,10 @@ LoginPage.java - Login ekranı ile ilgili işlemleri içerir.
 **src/test/java**
 
 * BaseTest.java - Tüm testler için ortak yapılandırmaları ve başlangıç işlemlerini içerir.
-HesapOlusturTest.java - Hesap oluşturma test senaryolarını içerir.
+* HesapOlusturTest.java - Hesap oluşturma test senaryolarını içerir.
 * ParamTest.java - Param sayfasına giriş için validasyonu içeren test senaryolarını içerir.
-Test Senaryolarını içerir.
-* HesapOlusturTest.java- Hesap oluşturma test senaryolarını içerir.
+
+**Test Senaryoları**
 
 **Test Senaryosu 1:** 
 **Login Sayfasına Yönlendirme ve Hatalı Giriş**
