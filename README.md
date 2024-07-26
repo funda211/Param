@@ -1,6 +1,8 @@
-Proje Yapısı
+Proje Yapısı ve Açıklaması
 
 Paketler ve Sınıflar
+
+ *`pom.xml`** (Project Object Model), Maven projesinin yapılandırma dosyasıdır.
 
 **src/main/java/pages**
 * HomePage.java - Ana sayfa ile ilgili işlemleri içerir.
@@ -21,8 +23,9 @@ LoginPage.java - Login ekranı ile ilgili işlemleri içerir.
 HesapOlusturTest.java - Hesap oluşturma test senaryolarını içerir.
 * ParamTest.java - Param sayfasına giriş için validasyonu içeren test senaryolarını içerir.
 Test Senaryolarını içerir.
+* HesapOlusturTest.java- Hesap oluşturma test senaryolarını içerir.
 
--- Test Senaryosu 1: 
+**Test Senaryosu 1:** 
 **Login Sayfasına Yönlendirme ve Hatalı Giriş**
 
 Ana Sayfa Yönlendirmesi
@@ -35,20 +38,21 @@ Login ekranına yönlendirilirsiniz (LoginPage sınıfı).
 Hatalı Giriş
 Yanlış giriş bilgilerini girin ve validasyon uyarısının doğrulandığını teyit edin.
 
-**Test Senaryosu 2: 
+****Test Senaryosu 2:** 
 **Hesap Oluşturma ve OTP Doğrulama**
 
 Login Sayfasına Yönlendirme
 Bir önceki adımları tekrar ederek login sayfasına gidin (LoginPage sınıfı).
-Hesap Oluşturma
+
+**Hesap Oluşturma** :
 "Hesap Oluştur" seçeneğine tıklayın (LoginPage sınıfı).
 HesapOlusturPage sınıfını kullanarak gerekli bilgileri doldurun.
 "Devam" butonuna tıklayarak ilerleyin.
-OTP Doğrulama
+
+**OTP Doğrulama** :
 OTP ekranına yönlendirilirsiniz (OTPPage sınıfı).
 Yanlış OTP girerek validasyonun doğrulandığını teyit edin.
-Yapılandırma
 
-config.properties dosyası, testlerinizi çalıştırmak için gerekli olan konfigürasyon bilgilerini içerir. Bu dosya genellikle WebDriver ayarları, URL'ler ve diğer parametreleri içerir.
+
 
 
