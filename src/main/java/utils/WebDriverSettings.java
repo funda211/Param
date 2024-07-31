@@ -1,4 +1,5 @@
 package utils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -8,9 +9,8 @@ public class WebDriverSettings {
     private int windowWidth;
     private int windowHeight;
 
-    public WebDriverSettings()
-    {
-       Properties properties = new Properties();
+    public WebDriverSettings() {
+        Properties properties = new Properties();
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties")) {
             if (input == null) {
                 System.out.println("Üzgünüz, config.properties bulunamadı");
@@ -38,5 +38,4 @@ public class WebDriverSettings {
     public int getWindowHeight() {
         return windowHeight;
     }
-    }
-
+}

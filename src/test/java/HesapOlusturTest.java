@@ -20,20 +20,20 @@ public class HesapOlusturTest extends BaseTest {
 
     @Test
     public void testHesapOlusturAndOTP() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
         // Ana sayfaya git
-        driver.get("https://param.com.tr/");
-        HomePage homePage = new HomePage(driver);
+        getDriver().get(BASE_URL);
+        HomePage homePage = new HomePage(getDriver());
         homePage.clickGirisYap();
 
         // Kurumsal giriş sayfasına git
-        HesapOlusturPage hesapOlusturPage = new HesapOlusturPage(driver);
+        HesapOlusturPage hesapOlusturPage = new HesapOlusturPage(getDriver());
         hesapOlusturPage.clickKurumsalGiris();
 
         // Tüm pencere tutucularını geçiş yap
-        for (String windowHandle : driver.getWindowHandles()) {
-            driver.switchTo().window(windowHandle);
+        for (String windowHandle : getDriver().getWindowHandles()) {
+            getDriver().switchTo().window(windowHandle);
         }
 
         // "Hesap Oluştur" linkine tıklama
@@ -49,7 +49,7 @@ public class HesapOlusturTest extends BaseTest {
         hesapOlusturPage.clickDevam();
 
         // OTP ekranına geçiş
-        OTPPage otpPage = new OTPPage(driver);
+        OTPPage otpPage = new OTPPage(getDriver());
 
         // Rastgele OTP gir
         otpPage.enterRandomOTP();
@@ -64,7 +64,5 @@ public class HesapOlusturTest extends BaseTest {
 
         // Mesajın beklenen değerle eşleşip eşleşmediğini kontrol et
         Assert.assertEquals(otpMessageText, EXPECTED_ERROR_MESSAGE, "Mesaj beklenilen değerle eşleşmiyor: " + otpMessageText);
-
-        tearDown();
     }
 }

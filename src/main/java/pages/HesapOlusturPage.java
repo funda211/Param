@@ -5,10 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.Random;
-
-public class HesapOlusturPage {
-    WebDriver driver;
+public class HesapOlusturPage extends BasePage {
 
     // Kurumsal Giriş butonunu için CSS
     @FindBy(css = "a.btn.btn-outline-primary.btn-icon[href*='isyerim.param.com.tr']")
@@ -31,50 +28,47 @@ public class HesapOlusturPage {
     @FindBy(name = "gsmNumber")
     WebElement telefonInput;
 
-     @FindBy(name = "checkBox1")
+    @FindBy(name = "checkBox1")
     WebElement aydinlatmaMetni;
-     @FindBy(name = "checkBox2")
+
+    @FindBy(name = "checkBox2")
     WebElement veriMetni;
-      @FindBy(name = "checkBox3")
+
+    @FindBy(name = "checkBox3")
     WebElement elektronikSozlesme;
-
-
-
 
     @FindBy(id = "continue_from_signup") // Devam butonu ID
     WebElement devamButton;
 
     public HesapOlusturPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public void clickKurumsalGiris() {
-        kurumsalGirisButton.click();
+        clickElement(kurumsalGirisButton);
     }
 
     public void clickHesapOlustur() {
-        hesapOlusturLink.click();
+        clickElement(hesapOlusturLink);
     }
 
     // Hesap oluşturma formunu doldur
     public void fillAccountCreationForm(String ad, String soyad, String email, String telefon) {
-        adInput.sendKeys(ad);
-        soyadInput.sendKeys(soyad);
-        emailInput.sendKeys(email);
-        telefonInput.sendKeys(telefon);
-
+        sendKeysToElement(adInput, ad);
+        sendKeysToElement(soyadInput, soyad);
+        sendKeysToElement(emailInput, email);
+        sendKeysToElement(telefonInput, telefon);
     }
 
-     public void clickCheckboxes() {
-        aydinlatmaMetni.click();
-        veriMetni.click();
-        elektronikSozlesme.click();
+    public void clickCheckboxes() {
+        clickElement(aydinlatmaMetni);
+        clickElement(veriMetni);
+        clickElement(elektronikSozlesme);
     }
+
     // Devam butonuna tıkla
     public void clickDevam() {
-        devamButton.click();
-
-
+        clickElement(devamButton);
     }
 }

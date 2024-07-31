@@ -8,11 +8,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
-import java.util.Properties;
 
 public class BaseTest {
     protected WebDriver driver;
     private WebDriverSettings webDriverSettings;
+    protected static final String BASE_URL = "https://param.com.tr/";
 
     @BeforeMethod
     public void setUp() {
@@ -41,5 +41,9 @@ public class BaseTest {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 }

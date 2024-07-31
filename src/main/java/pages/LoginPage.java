@@ -5,51 +5,39 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
+public class LoginPage extends BasePage {
 
-public class LoginPage {
-    WebDriver driver;
-    WebDriverWait wait;
+    @FindBy(name = "userCardNo")
+    private WebElement usernameField;
 
-    @FindBy(name = "userCardNo")  // Kullanıcı adı alanının doğru ID veya seçicisini buraya ekleyin
-    WebElement usernameField;
+    @FindBy(name = "userPassword")
+    private WebElement passwordField;
 
-    @FindBy(name = "userPassword")  // Şifre alanının doğru ID veya seçicisini buraya ekleyin
-    WebElement passwordField;
+    @FindBy(id = "loginbutton")
+    private WebElement loginButton;
 
-    @FindBy(id = "loginbutton")  // Giriş butonunun doğru ID veya seçicisini buraya ekleyin
-    WebElement loginButton;
-
-    @FindBy(css = ".modalTitle___WE5UD")  // Hata mesajının CSS
-    WebElement errorMessage;
+    @FindBy(css = ".modalTitle___WE5UD")
+    private WebElement errorMessage;
 
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // 20 saniye bekleme süresi
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
     public void enterUsername(String username) {
-        wait.until(ExpectedConditions.visibilityOf(usernameField));
-        usernameField.clear(); // Kullanıcı adı alanını temizle
-        usernameField.sendKeys(username); // Yeni kullanıcı adını gir
+        sendKeysToElement(usernameField, username);
     }
 
     public void enterPassword(String password) {
-        wait.until(ExpectedConditions.visibilityOf(passwordField));
-        passwordField.clear(); // Şifre alanını temizle
-        passwordField.sendKeys(password); // Yeni şifreyi gir
+        sendKeysToElement(passwordField, password);
     }
 
     public void clickLogin() {
-        wait.until(ExpectedConditions.elementToBeClickable(loginButton));
-        loginButton.click();
+        clickElement(loginButton);
     }
 
     public String getErrorMessage() {
-        wait.until(ExpectedConditions.visibilityOf(errorMessage)); // Hata mesajının görünür olmasını bekle
-        return errorMessage.getText(); // Hata mesajını döndür
+        return wait.until(ExpectedConditions.visibilityOf(errorMessage)).getText().trim();
     }
 }

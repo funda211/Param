@@ -7,10 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Random;
 
-public class OTPPage {
-    WebDriver driver;
+public class OTPPage extends BasePage {
 
-    // OTP input alanları
     @FindBy(name = "input1")
     WebElement otpInput1;
 
@@ -29,20 +27,17 @@ public class OTPPage {
     @FindBy(name = "input6")
     WebElement otpInput6;
 
-    // OTP hata mesajı
-    @FindBy(css = ".otpErrorSelector") // OTP hata mesajı için CSS
+    @FindBy(css = ".otpErrorSelector")
     WebElement otpErrorMessage;
 
-    // Onayla butonu
     @FindBy(id = "continue_from_otp")
     WebElement onaylaButton;
 
     public OTPPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    // Rastgele OTP girme
     public void enterRandomOTP() {
         Random rand = new Random();
         otpInput1.sendKeys(String.valueOf(rand.nextInt(10)));
@@ -53,13 +48,11 @@ public class OTPPage {
         otpInput6.sendKeys(String.valueOf(rand.nextInt(10)));
     }
 
-    // Onayla butonuna tıkla
     public void clickOnayla() {
-        onaylaButton.click();
+        clickElement(onaylaButton); // BasePage'deki clickElement metodunu kullan
     }
-
-    // OTP hata mesajını al
-    public WebElement getOTPErrorMessage() {
+/*
+    public WebElement getOtpErrorMessage() {
         return otpErrorMessage;
-    }
+    }*/
 }

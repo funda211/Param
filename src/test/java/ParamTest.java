@@ -1,6 +1,6 @@
-package test.java;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -18,10 +18,11 @@ public class ParamTest extends BaseTest {
 
     @Test
     public void testParamLogin() {
+        WebDriver driver = getDriver(); // BaseTest'ten gelen getDriver() metodunu kullanın
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Ana sayfaya git
-        driver.get("https://param.com.tr/");
+        driver.get(BASE_URL);
         HomePage homePage = new HomePage(driver);
         homePage.clickGirisYap();
 
@@ -41,13 +42,12 @@ public class ParamTest extends BaseTest {
         loginPage.clickLogin();
 
         // Hata mesajını kontrol et
-        String messageText = loginPage.getErrorMessage().trim();
+        WebElement messageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".modalTitle___WE5UD")));
+        String messageText = messageElement.getText().trim();
         System.out.println("Actual message: " + messageText);
 
         // Mesajın beklenen değerle eşleşip eşleşmediğini kontrol et
         String normalizedMessageText = messageText.replaceAll("\\s+", " ").trim();
         Assert.assertEquals(normalizedMessageText, EXPECTED_ERROR_MESSAGE, "Mesaj beklenilen değerle eşleşmiyor: " + messageText);
-
-        tearDown();
     }
 }
