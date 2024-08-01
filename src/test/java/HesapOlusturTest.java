@@ -22,7 +22,7 @@ public class HesapOlusturTest extends BaseTest {
     public void testHesapOlusturAndOTP() {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
-        // Ana sayfaya git
+        // Ana sayfa
         getDriver().get(BASE_URL);
         HomePage homePage = new HomePage(getDriver());
         homePage.clickGirisYap();
